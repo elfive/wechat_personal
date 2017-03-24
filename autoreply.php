@@ -656,8 +656,6 @@ $item_str</xml>";
 			$log_fileFolder = "log/";
 			if (!file_exists($log_fileFolder)) {
 				if(!mkdir($log_fileFolder, 0770)){return false;}
-			} else {
-				rrmdir($log_fileFolder);
 			}
 
 			$log_filename = $log_fileFolder.$user.".log";
