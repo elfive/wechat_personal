@@ -32,5 +32,5 @@
 1、如果要开启语音命令功能，需要在微信后台开启语音识别功能，该功能对新关注用户立即生效，对以关注用户在24小时内生效；  
 2、微信公众平台后台接入地址要定位到wechat.php文件；  
 3、微信消息加解密方式需要使用安全模式：打开wechat.php，将Token、appID和EncodingAESKey修改好；  
-4、因为使用了mb_substr等函数，所以需要在php.ini中打开php_mbstring.dll扩展，然后重启apache2或者nginx服务
-打开autoreply.php文件可以设置是否记录消息接收记录和是否启用语音命令功能。
+4、因为使用了mb_substr等函数，所以需要在php.ini中打开php_mbstring.dll扩展，然后重启apache2或者nginx服务；  
+5、打开autoreply.php文件可以设置是否记录消息接收记录和是否启用语音命令功能。
