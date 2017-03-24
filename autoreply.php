@@ -268,11 +268,11 @@ class autoReplyBot
 					$currentPage = 0;
 					$newsPageCount = 0;
 
-					$log_fileFolder = "news/".md5($object->FromUserName);
-					if (!file_exists($log_fileFolder)) {
-						if(!mkdir($log_fileFolder, 0770)){return false;}
+					$newsFolder = "news/".md5($object->FromUserName);
+					if (!file_exists($newsFolder)) {
+						if(!mkdir($newsFolder, 0770)){return false;}
 					} else {
-						rrmdir($log_fileFolder);
+						rrmdir($newsFolder);
 					}
 
 					foreach($contentArray['list'] as $news)
@@ -287,7 +287,7 @@ class autoReplyBot
 						if ($newsCount % 7 == 0) {
 							//每篇多图文最多支持8篇文章，所以在这里最后一篇文章用来显示下一页的命令。
 							$newsPageCount ++;
-							$saveResult = $this->saveNews($newsArray,$log_fileFolder,$newsPageCount);
+							$saveResult = $this->saveNews($newsArray,$newsFolder,$newsPageCount);
 							unset($newsArray);
 							$newsArray = array();
 						}
@@ -296,15 +296,15 @@ class autoReplyBot
 					if (isset($newsArray[0]))
 					{
 						$newsPageCount ++;
-						$saveResult = $this->saveNews($newsArray,$log_fileFolder,$newsPageCount);
+						$saveResult = $this->saveNews($newsArray,$newsFolder,$newsPageCount);
 					}
 
 					$newsIndexContent = json_encode(array("NewsCount"=>$newsCount,"PageCount"=>$newsPageCount,"CurrentPage"=>$currentPage));
-					file_put_contents($log_fileFolder."/index",$newsIndexContent);
+					file_put_contents($newsFolder."/index",$newsIndexContent);
 
 					//加载第一页新闻内容
 					$content = array();
-					$pages = $this->loadNews($content,$log_fileFolder,$currentPage);
+					$pages = $this->loadNews($content,$newsFolder,$currentPage);
 					if($pages!=0)
 					{	
 						unset($content);
@@ -652,7 +652,15 @@ $item_str</xml>";
 			if ($user == "") {
 				$user = "Error";
 			}
-			$log_filename = "log/".$user.".log";
+
+			$log_fileFolder = "log/";
+			if (!file_exists($log_fileFolder)) {
+				if(!mkdir($log_fileFolder, 0770)){return false;}
+			} else {
+				rrmdir($log_fileFolder);
+			}
+
+			$log_filename = $log_fileFolder.$user.".log";
 			if(file_exists($log_filename) and (abs(filesize($log_filename)) > $max_size))
 				{
 					unlink($log_filename);
