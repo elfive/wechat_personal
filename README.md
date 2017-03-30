@@ -1,5 +1,5 @@
 ## 2017-03-30  
-新增加了一个发送邮件的模块，通过引用commenFunction.php之后，直接调用send_mail发送邮件即可。  
+1、新增加了一个发送邮件的模块，通过引用commenFunction.php之后，直接调用send_mail发送邮件即可；  
   
 【send_mail语法】  
 send_email($mail_content,$mail_recipient,$mail_subject)  
@@ -13,6 +13,8 @@ $mail_subject：邮件主题，选填，默认为“（无主题）”。
 json字符串，包含code和description两个字段：  
 code为0表示发送成功；  
 code为非零表示发送失败，此时description字段将显示发送失败的原因。  
+  
+2、更新了微信加密模块中构造函数，修改为了__construct()。  
   
 ## 2017-03-29
 为了clone本仓库的速度，去除了对在线游戏的支持。  
