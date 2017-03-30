@@ -28,7 +28,7 @@ class WXBizMsgCrypt
 	 * @param $encodingAesKey string 公众平台上，开发者设置的EncodingAESKey
 	 * @param $appId string 公众平台的appId
 	 */
-	public function WXBizMsgCrypt($token, $encodingAesKey, $appId)
+	public function __construct($token, $encodingAesKey, $appId)
 	{
 		$this->token = $token;
 		$this->encodingAesKey = $encodingAesKey;
