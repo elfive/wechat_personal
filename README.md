@@ -1,4 +1,5 @@
-## 2017-03-30  
+# 更新日志
+## 2017-03-30  
 1、新增加了一个发送邮件的模块，通过引用commenFunction.php之后，直接调用send_mail发送邮件即可；  
   
 【send_mail语法】  
@@ -37,7 +38,11 @@ code为非零表示发送失败，此时description字段将显示发送失败�
    
    
    
-# 使用前的准备：
+# 使用方法：  
+## 邮箱接入：  
+1、目前SDK只做了对smtp（ssl）的支持，所以建议用户使用诸如QQ、Gmail等支持ssl加密的smtp邮件服务；  
+2、打开functions\email\email.php，将服务商提供的smtp信息填入__construct()函数之前的变量中，或者在初始化实例的时候手动指定也行；  
+
 ## face++（人脸识别）接入：
 1、注册face++，并获取相关apikey等信息；  
 2、打开functions\face_recognition\facepp_sdk.php，修改好你的api(server)地址、api_key和api_secret。  
