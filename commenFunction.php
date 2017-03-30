@@ -81,4 +81,31 @@
 		return $jsonStr;	
 	}
 
+	function send_email($mail_content,$mail_recipient,$mail_subject)
+	{
+		require_once 'functions/email/email.php';
+		$mail = new mailer();
+		$res = json_decode($mail->excute($mail_recipient,$mail_subject,$mail_content),true);
+
+		if ($res['code'] == 0) {
+			return "邮件发送成功";
+		} else {
+			return "邮件发送失败：\n".$res['description'];
+		}
+	}
+
+	//回复第三方接口消息
+	function replyThirdParty($url, $rawData)
+	{
+		$headers = array("Content-Type: text/xml; charset=utf-8");
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $rawData);
+		$output = curl_exec($ch);
+		curl_close($ch);
+		return $output;
+	}
 ?>

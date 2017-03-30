@@ -223,7 +223,8 @@ class autoReplyBot
 		//自动回复模式
 		if ($keyword == "菜单" || $keyword == "帮助"){
 			$content = "你是需要帮助嘛？";
-
+		}else if ($keyword == "测试邮件"){
+			$content = send_email("测试邮件-内容","recipient@qq.com","测试邮件-主题");
 		// }else if ($keyword == "音乐"){
 		// 	$content = array();
 		// 	$content = array("Title"=>"最炫民族风", "Description"=>"歌手：凤凰传奇", "MusicUrl"=>"http://mascot-music.stor.sinaapp.com/zxmzf.mp3", "HQMusicUrl"=>"http://mascot-music.stor.sinaapp.com/zxmzf.mp3"); 
