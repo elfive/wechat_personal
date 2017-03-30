@@ -3,11 +3,14 @@
   
 【send_mail语法】  
 send_email($mail_content,$mail_recipient,$mail_subject)  
+  
 参数说明：  
 $mail_content：邮件内容，必填，utf-8编码，支持中文；  
 $mail_recipient：邮件接收方，必填；  
 $mail_subject：邮件主题，选填，默认为“（无主题）”。  
-返回值：json字符串，包含code和description两个字段：  
+  
+返回值：  
+json字符串，包含code和description两个字段：  
 code为0表示发送成功；  
 code为非零表示发送失败，此时description字段将显示发送失败的原因。  
   
