@@ -1,6 +1,19 @@
+## 2017-03-30  
+新增加了一个发送邮件的模块，通过引用commenFunction.php之后，直接调用send_mail发送邮件即可。  
+  
+【send_mail语法】  
+send_email($mail_content,$mail_recipient,$mail_subject)  
+参数说明：  
+$mail_content：邮件内容，必填，utf-8编码，支持中文；  
+$mail_recipient：邮件接收方，必填；  
+$mail_subject：邮件主题，选填，默认为“（无主题）”。  
+返回值：json字符串，包含code和description两个字段：  
+code为0表示发送成功；  
+code为非零表示发送失败，此时description字段将显示发送失败的原因。  
+  
 ## 2017-03-29
 为了clone本仓库的速度，去除了对在线游戏的支持。  
-
+  
 ## 2017-03-24
 修改face++代码，支持同一张图片多人识别。  
   
